@@ -1,0 +1,15 @@
+ResultSet rs = state.executeQuery("Select * from exam");
+		
+		ResultSetMetaData rsmd = rs.getMetaData();
+		
+		for(int i = 1; i<=rsmd.getColumnCount(); i++) {
+			System.out.println(rsmd.getColumnLabel(i)+"  ");
+		}
+		System.out.println();
+		
+		DatabaseMetaData dbmd = con.getMetaData();
+		System.out.println(dbmd.getDriverName());
+		while(rs.next()) {
+			System.out.println(rs.getInt(1)+"  "+rs.getString(2));
+		}
+		System.out.println();
