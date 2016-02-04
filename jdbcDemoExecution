@@ -1,0 +1,31 @@
+package com.persistent.training.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JdbcDemo {
+
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+		
+		//Register driver STEP1:
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		
+		//Create connection STEP2:
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","Ronnie","313");
+
+		System.out.println("Creating the connection object... Please wait, this might take a while");
+		//Create statement Step3:
+		Statement state = con.createStatement();
+		
+		//Running queries
+		//state.executeUpdate("create table Exam(id number,name varchar(20))");
+		state.executeUpdate("insert into Exam values(1,'Python')");
+		state.executeUpdate("insert into Exam values(2,'Java J2EE')");
+		state.executeUpdate("insert into Exam values(3,'Node.JS')");
+		
+		System.out.println("A new table has been created, with records");
+		
+	}
+}
